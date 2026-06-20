@@ -37,7 +37,7 @@ interface SendArgs {
 async function send({ to, subject, html }: SendArgs) {
   if (!emailConfigured) {
     console.info(
-      `[email] RESEND_API_KEY not set — skipping email "${subject}" to ${to}`
+      `[email] RESEND_API_KEY not set, skipping email "${subject}" to ${to}`
     );
     return { skipped: true as const };
   }

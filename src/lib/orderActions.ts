@@ -3,7 +3,7 @@ import { sendOrderConfirmation } from "./email";
 
 // Confirms a PENDING order: marks it CONFIRMED, records the payment id,
 // decrements product stock and sends the confirmation email.
-// Idempotent — safe to call from both verify-payment and the webhook.
+// Idempotent: safe to call from both verify-payment and the webhook.
 export async function confirmPendingOrder(
   orderId: string,
   razorpayPaymentId: string
