@@ -4,7 +4,7 @@ import { getContent, saveContent } from "@/lib/content";
 
 // GET: full site content (studio, brands, reels).
 export async function GET() {
-  const denied = requireAdmin();
+  const denied = await requireAdmin();
   if (denied) return denied;
 
   const content = await getContent();
@@ -13,7 +13,7 @@ export async function GET() {
 
 // PUT: replace any of { studio, brands, reels }. Only provided keys change.
 export async function PUT(req: NextRequest) {
-  const denied = requireAdmin();
+  const denied = await requireAdmin();
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));

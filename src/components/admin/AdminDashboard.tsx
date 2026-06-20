@@ -7,6 +7,7 @@ import ProductsTab from "./tabs/ProductsTab";
 import BrandsTab from "./tabs/BrandsTab";
 import ReelsTab from "./tabs/ReelsTab";
 import ContactsTab from "./tabs/ContactsTab";
+import SettingsTab from "./tabs/SettingsTab";
 
 const TABS = [
   { id: "orders", label: "Orders" },
@@ -14,6 +15,7 @@ const TABS = [
   { id: "brands", label: "Brands" },
   { id: "reels", label: "Reels" },
   { id: "contacts", label: "Contacts" },
+  { id: "settings", label: "Settings" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
@@ -68,6 +70,7 @@ export default function AdminDashboard() {
         {tab === "brands" && <BrandsTab />}
         {tab === "reels" && <ReelsTab />}
         {tab === "contacts" && <ContactsTab />}
+        {tab === "settings" && <SettingsTab />}
       </div>
     </div>
   );

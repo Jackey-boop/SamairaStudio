@@ -5,7 +5,7 @@ import { requireAdmin } from "@/lib/adminGuard";
 // GET: list all products (incl. inactive). POST: create a product.
 // `price` is in paise.
 export async function GET() {
-  const denied = requireAdmin();
+  const denied = await requireAdmin();
   if (denied) return denied;
 
   const products = await prisma.product.findMany({
@@ -15,7 +15,7 @@ export async function GET() {
 }
 
 export async function POST(req: NextRequest) {
-  const denied = requireAdmin();
+  const denied = await requireAdmin();
   if (denied) return denied;
 
   const body = await req.json().catch(() => ({}));

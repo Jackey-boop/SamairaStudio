@@ -5,7 +5,7 @@ import { isOrderStatus } from "@/lib/orderStatus";
 
 // GET: list orders with optional ?status= and ?q= (order id / email) filters.
 export async function GET(req: NextRequest) {
-  const denied = requireAdmin();
+  const denied = await requireAdmin();
   if (denied) return denied;
 
   const status = req.nextUrl.searchParams.get("status") || "";

@@ -80,3 +80,10 @@ model ContactSubmission {
   message   String
   createdAt DateTime @default(now())
 }
+
+// Simple key/value store for mutable app settings (e.g. the admin
+// password hash, which can be changed from the admin panel at runtime).
+model Setting {
+  key   String @id
+  value String
+}
