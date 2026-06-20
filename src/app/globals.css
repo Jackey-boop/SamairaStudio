@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-body antialiased;
+    /* faint paper dot texture */
+    background-image: radial-gradient(
+      rgba(26, 26, 26, 0.04) 1px,
+      transparent 1px
+    );
+    background-size: 22px 22px;
+  }
+  ::selection {
+    background: #f2a48e;
+    color: #1a1a1a;
+  }
+}
+
+@layer components {
+  /* Soft doodle card: slight tilt that straightens on hover */
+  .card-doodle {
+    @apply rounded-2xl border border-black/10 bg-white p-5 shadow-doodle transition-all duration-300;
+    transform: rotate(-0.5deg);
+  }
+  .card-doodle:hover {
+    transform: rotate(0deg) translateY(-3px);
+    @apply shadow-doodle-coral;
+  }
+
+  /* Rounded pill CTA */
+  .pill {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-white px-5 py-2.5 text-sm font-semibold transition-all duration-200;
+  }
+  .pill:hover {
+    @apply -translate-y-0.5 border-coral/40 shadow-doodle;
+  }
+
+  .btn-coral {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-coral px-6 py-3 text-sm font-semibold text-white transition-all duration-200;
+  }
+  .btn-coral:hover {
+    @apply -translate-y-0.5 bg-coral-dark shadow-doodle-coral;
+  }
+  .btn-coral:disabled {
+    @apply cursor-not-allowed opacity-60 hover:translate-y-0 hover:bg-coral hover:shadow-none;
+  }
+
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-ink/15 bg-transparent px-5 py-2.5 text-sm font-semibold transition-all duration-200 hover:border-coral/40 hover:bg-white;
+  }
+
+  /* Form fields */
+  .field-label {
+    @apply mb-1.5 block text-sm font-semibold text-ink/80;
+  }
+  .field-input {
+    @apply w-full rounded-xl border border-ink/15 bg-white px-4 py-2.5 text-sm outline-none transition-colors placeholder:text-ink/30 focus:border-coral focus:ring-2 focus:ring-coral/20;
+  }
+
+  .section {
+    @apply mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20;
+  }
+
+  .status-pill {
+    @apply inline-flex items-center rounded-full border px-3 py-1 text-xs font-semibold;
+  }
+}
+
+@layer utilities {
+  /* hide the default number-input spinners */
+  .no-spinner::-webkit-outer-spin-button,
+  .no-spinner::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  .no-spinner {
+    -moz-appearance: textfield;
+  }
+}

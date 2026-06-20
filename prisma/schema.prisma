@@ -1,0 +1,82 @@
+// ─────────────────────────────────────────────────────────────
+// Samaira Studio — Prisma schema
+//
+// Default datasource is SQLite so the project runs locally with
+// zero external setup. SQLite does not support native `enum` or
+// `Json` column types, so:
+//   • Order.status   is a String (allowed values live in
+//                    src/lib/orderStatus.ts as the OrderStatus enum)
+//   • Order.address  is a String holding JSON (line1, line2, city,
+//                    state, pincode). Helpers in src/lib/orders.ts
+//                    parse/serialize it.
+//
+// To switch to PostgreSQL for production:
+//   1. set provider = "postgresql" below and DATABASE_URL accordingly
+//   2. (optional) promote `status` to a native `enum OrderStatus`
+//      and `address` to a native `Json` column, e.g.:
+//
+//        enum OrderStatus { PENDING CONFIRMED PACKED SHIPPED
+//                           DELIVERED CANCELLED REFUNDED }
+//        status  OrderStatus @default(PENDING)
+//        address Json
+//
+//   3. run `npx prisma migrate deploy`
+// ─────────────────────────────────────────────────────────────
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  price       Int // in paise (₹1 = 100 paise) — Razorpay charges in paise
+  image       String
+  stock       Int      @default(0)
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+}
+
+model Order {
+  id                String      @id @default(cuid())
+  razorpayOrderId   String      @unique
+  razorpayPaymentId String?
+  status            String      @default("PENDING") // OrderStatus enum (see src/lib/orderStatus.ts)
+  customerName      String
+  customerEmail     String
+  customerPhone     String
+  address           String // JSON: { line1, line2, city, state, pincode }
+  items             OrderItem[]
+  subtotal          Int // paise
+  total             Int // paise
+  trackingNumber    String?
+  courierName       String?
+  estimatedDelivery DateTime?
+  createdAt         DateTime    @default(now())
+  updatedAt         DateTime    @updatedAt
+}
+
+model OrderItem {
+  id           String @id @default(cuid())
+  orderId      String
+  order        Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  productId    String
+  productName  String // snapshot at time of purchase
+  productImage String
+  price        Int // paise, snapshot at time of purchase
+  quantity     Int
+}
+
+model ContactSubmission {
+  id        String   @id @default(cuid())
+  name      String
+  brand     String?
+  message   String
+  createdAt DateTime @default(now())
+}

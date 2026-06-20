@@ -1,0 +1,83 @@
+{
+  "studio": {
+    "name": "Samaira Studio",
+    "tagline": "we turn scrolls into stories",
+    "bio": "A tiny content studio with big ideas. We craft reels, campaigns and little moments of internet magic for brands that want to feel human.",
+    "instagram": "https://instagram.com/samairastudio",
+    "email": "hello@samairastudio.com"
+  },
+  "reels": [
+    {
+      "id": "reel-1",
+      "title": "Morning chai ritual",
+      "views": "1.2M",
+      "thumbnail": "https://images.unsplash.com/photo-1556679343-c7306c1976bc?w=600&q=80",
+      "url": "https://instagram.com/reel/sample-1"
+    },
+    {
+      "id": "reel-2",
+      "title": "Skincare, but make it cozy",
+      "views": "860K",
+      "thumbnail": "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&q=80",
+      "url": "https://instagram.com/reel/sample-2"
+    },
+    {
+      "id": "reel-3",
+      "title": "A day in our studio",
+      "views": "2.4M",
+      "thumbnail": "https://images.unsplash.com/photo-1492724441997-5dc865305da7?w=600&q=80",
+      "url": "https://instagram.com/reel/sample-3"
+    }
+  ],
+  "brands": [
+    {
+      "id": "brand-1",
+      "name": "Mossy Co.",
+      "logo": "https://placehold.co/200x100/FDFAF5/1A1A1A?text=Mossy+Co.",
+      "engagement": "4.8% avg engagement",
+      "description": "Sustainable home & living"
+    },
+    {
+      "id": "brand-2",
+      "name": "Bloom Beauty",
+      "logo": "https://placehold.co/200x100/FDFAF5/E07A5F?text=Bloom",
+      "engagement": "6.1% avg engagement",
+      "description": "Clean skincare for everyday"
+    },
+    {
+      "id": "brand-3",
+      "name": "Tilt Coffee",
+      "logo": "https://placehold.co/200x100/FDFAF5/1A1A1A?text=Tilt",
+      "engagement": "5.3% avg engagement",
+      "description": "Small-batch specialty roasters"
+    },
+    {
+      "id": "brand-4",
+      "name": "Paper Lane",
+      "logo": "https://placehold.co/200x100/FDFAF5/81B29A?text=Paper+Lane",
+      "engagement": "3.9% avg engagement",
+      "description": "Stationery & handmade goods"
+    },
+    {
+      "id": "brand-5",
+      "name": "Nimbus Tech",
+      "logo": "https://placehold.co/200x100/FDFAF5/1A1A1A?text=Nimbus",
+      "engagement": "4.2% avg engagement",
+      "description": "Gadgets for the curious"
+    },
+    {
+      "id": "brand-6",
+      "name": "Saffron Kitchen",
+      "logo": "https://placehold.co/200x100/FDFAF5/E07A5F?text=Saffron",
+      "engagement": "7.0% avg engagement",
+      "description": "Heritage spice blends"
+    },
+    {
+      "id": "brand-7",
+      "name": "Wanderknot",
+      "logo": "https://placehold.co/200x100/FDFAF5/81B29A?text=Wanderknot",
+      "engagement": "5.8% avg engagement",
+      "description": "Travel & lifestyle accessories"
+    }
+  ]
+}
